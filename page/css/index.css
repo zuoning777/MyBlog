@@ -46,6 +46,7 @@
 .article_title {
     display: inline-block;
     font-size: 20px;
+    font-weight: 600;
     text-decoration: none;
     color: #13102b;
     padding: 20px 10px 5px 10px;
