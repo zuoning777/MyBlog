@@ -50,8 +50,9 @@ function getResult(blogList, len, response) {
     } else {
         for (var i = 0 ; i < blogList.length ; i ++) {
             blogList[i].content = blogList[i].content.replace(/<img[\w\W]*">/, "");
-            blogList[i].content = blogList[i].content.replace(/<[\w\W]{1,5}>/g, "");
-            blogList[i].content = blogList[i].content.substring(0, 300);
+            blogList[i].content = blogList[i].content.replace(/(<p(([\s\S])*?)>|<\/p>|<code(([\s\S])*?)>|<\/code>|&nbsp;|<a(([\s\S])*?)>|<\/a>)|<div(([\s\S])*?)>|<\/div>|<span(([\s\S])*?)>|<\/span>|<pre(([\s\S])*?)>|<\/pre>|<h3(([\s\S])*?)>|<\/h3>|<br(([\s\S])*?)>|<\/br>|<font(([\s\S])*?)>|<\/font>|<o(([\s\S])*?)>|<\/o:p>|<li(([\s\S])*?)>|<\/li>|<ol(([\s\S])*?)>|<\/ol>|<ul(([\s\S])*?)>|<\/ul>|<table(([\s\S])*?)>|<\/table>|<thead(([\s\S])*?)>|<\/thead>|<tr(([\s\S])*?)>|<\/tr>|<th(([\s\S])*?)>|<\/th>|<tbody(([\s\S])*?)>|<\/tbody>|<td(([\s\S])*?)>|<\/td>/g, "");
+            blogList[i].content = blogList[i].content.replace(/&gt;/g, ">").replace(/&lt;/g, "<");
+            blogList[i].content = blogList[i].content.substring(0, 350);
         }
         response.writeHead(200);
         response.write(respUtil.writeResult("success", "查询成功", blogList));

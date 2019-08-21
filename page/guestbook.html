@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,40 +9,64 @@
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/guestbook.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="./js/vue.js"></script>
     <script src="./js/axios.js"></script>
+    <script src="./bootstrap-wysiwyg-master/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <header class="header">
+    <!-- <header class="header"> -->
+    <div class="container">
+        <nav class="navbar navbar-default">
             <div class="container">
-                <a href="/" class="title">左宁の博客 | 技术博客</a>
-                <ul class="menu">
-                    <li><a href="/">首页</a></li>
-                    <li><a href="/sitemap.html">地图</a></li>
-                    <li><a href="/about.html">关于</a></li>
-                    <li><a href="/guestbook.html">留言</a></li>
-                </ul>
-                <div class="search_bar">
-                    <input type="text" placeholder="输入关键词查找">
-                    <button>搜索</button>
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">左宁の博客 | 技术博客</a>
                 </div>
-            </div>
-        </header>
-        <div class="content">
-            <div class="content_left">
-               <div class="description">
-                   <p>东瞅瞅西逛逛，到处窃技术文的博客</p>
-                   <p>如果有感兴趣的朋友可以留言</p>
-                   <p>博客虽然靠心血来潮更新，但是博主24小时在线~</p>
-                   <p>本博客由vue+node+express+mysql+bootstrap拼凑而成</p>
-               </div>
-               <div class="blog_comments" id="blog_comments">
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/sitemap.html">地图</a></li>
+                        <li><a href="/about.html">关于</a></li>
+                        <li class="active"><a href="/guestbook.html">留言</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <!-- </header> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="description">
+                    <p>东瞅瞅西逛逛，到处窃技术文的博客</p>
+                    <p>如果有感兴趣的朋友可以留言</p>
+                    <p>博客虽然靠心血来潮更新，但是博主24小时在线~</p>
+                    <p>本博客由vue+node+express+mysql+bootstrap拼凑而成</p>
+                </div>
+                <div class="blog_comments" id="blog_comments">
                     <span class="blog_comments_msg">当前文章：{{total}} 条留言</span>
                     <div class="blog_comment" v-for="comment in updateComments">
-                        <span><b>{{comment.user_name}}</b>：{{comment.options}} 发表于 {{comment.ctime}} <a style="cursor: pointer" v-on:click="reply(comment.id, comment.user_name)">[回复]</a></span>
+                        <span><b>{{comment.user_name}}</b>：{{comment.options}} 发表于 {{comment.ctime}} <a
+                                style="cursor: pointer"
+                                v-on:click="reply(comment.id, comment.user_name)">[回复]</a></span>
                         <div>{{comment.comments}}</div>
                     </div>
-               </div>
+                </div>
 
                 <div class="send_comment" id="send_comment">
                     <span>发表评论</span>
@@ -61,15 +86,17 @@
                     <button v-on:click="sendComment()">提交评论</button>
                 </div>
             </div>
-            <div class="content_right">
+            <div class="col-md-4">
                 <div class="right_module" id="random_tags">
                     <div>随机标签云</div>
-                    <a v-for="(tag, index) in tags" :style="{color:randomColor(), fontSize:randomSize()}" v-bind:href="tag.link">{{ tag.text }}</a>
+                    <a v-for="(tag, index) in tags" :style="{color:randomColor(), fontSize:randomSize()}"
+                        v-bind:href="tag.link">{{ tag.text }}</a>
                 </div>
                 <div class="right_module" id="new_hot">
                     <div>最近热门</div>
                     <ul>
-                        <li v-for="(temp, index) in titleList" :key="index"><a :href="temp.link">{{ temp.title }}</a></li>
+                        <li v-for="(temp, index) in titleList" :key="index"><a :href="temp.link">{{ temp.title }}</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="right_module" id="new_comments">
@@ -91,27 +118,29 @@
                     <span><a href="/">左宁的个人博客</a></span><span><a href="/">左宁的个人博客</a></span>
                     <span><a href="/">左宁的个人博客</a></span><span><a href="/">左宁的个人博客</a></span>
                     <span><a href="/">左宁的个人博客</a></span><span><a href="/">左宁的个人博客</a></span>
-                    </div>
+                </div>
             </div>
         </div>
-        <footer class="footer">
-            <ul>
-                <li>C/C++</li>
-                <li>CSS/DIV</li>
-                <li>java</li>
-                <li>javascript</li>
-                <li>Linux</li>
-                <li>Mac</li>
-                <li>PC技术</li>
-                <li>PHP</li>
-                <li>Python</li>
-                <li>Raspberry</li>
-                <li>Ubuntu</li>
-                <li>wordpress</li>
-            </ul>
-            <p>Copyright © 2010-2019 左宁个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计</p>
-        </footer>
-        <script src="./js/guestbook.js"></script>
-        <script src="./js/base.js"></script>
+    </div>
+    <footer class="footer">
+        <ul>
+            <li>C/C++</li>
+            <li>CSS/DIV</li>
+            <li>java</li>
+            <li>javascript</li>
+            <li>Linux</li>
+            <li>Mac</li>
+            <li>PC技术</li>
+            <li>PHP</li>
+            <li>Python</li>
+            <li>Raspberry</li>
+            <li>Ubuntu</li>
+            <li>wordpress</li>
+        </ul>
+        <p>Copyright © 2017-2019 左宁个人博客 This blog by zuoning.以上标签纯属写着好看，我也想学系列</p>
+    </footer>
+    <script src="./js/guestbook.js"></script>
+    <script src="./js/base.js"></script>
 </body>
+
 </html>

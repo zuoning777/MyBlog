@@ -16,95 +16,6 @@ body {
     text-align: center;
 }
 
-.header {
-    width: 100%;
-    height: 50px;
-    background: #191818;
-}
-
-.container {
-    position: relative;
-    width: 1140px;
-    height: 50px;
-    margin: 0px auto;
-    /* background-color: pink; */
-}
-
-.title {
-    display: inline-block;
-    float: left;
-    color: #eeeeee;
-    line-height: 50px;
-    margin: 0px 15px;
-    font-size: 18px;
-}
-
-.menu {
-    float: left;
-}
-
-.menu li {
-    display: inline-block;
-    float: left;
-    height: 50px;
-    width: 58px;
-    font-size: 14px;
-    line-height: 50px;
-}
-
-.menu li a {
-    color: #eeeeee;
-}
-
-.search_bar input {
-    display: inline-block;
-    position: absolute;
-    height: 22px;
-    width: 220px;
-    padding: 3px 8px;
-    border-radius: 5px;
-    outline: none;
-    font-size: 14px;
-    top: 50%;
-    margin-top: -18px;
-    right: 60px;
-}
-
-.search_bar button {
-    display: inline-block;
-    position: absolute;
-    width: 54px;
-    height: 34px;
-    padding: 2px 8px;
-    border-radius: 8px;
-    top: 50%;
-    margin-top: -18px;
-    outline: none;
-    color: #555555;
-    right: 0px;
-    background-color: #eeeeee;
-}
-
-.content {
-    display: inline-block;
-    position: relative;
-    width: 1140px;
-    margin: 30px auto 0px auto;
-}
-
-.content_left {
-    float: left;
-    width: 62%;
-    padding: 0px 20px 0px 0px;
-    box-sizing: border-box;
-}
-
-.content_right {
-    float: right;
-    width: 36%;
-    padding: 0;
-}
-
 .right_module {
     display: inline-block;
     width: 100%;
@@ -195,6 +106,7 @@ body {
     display: inline-block;
     margin: 0px auto;
     text-align: center;
+    background: #191818;
 }
 
 .footer ul li {
@@ -210,6 +122,8 @@ body {
 .footer p {
     margin-top: 10px;
     color: #a2a2a2;
+    width: 100%;
+    background: #191818;
 }
 
 .page_tool {
