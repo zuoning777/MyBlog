@@ -4,7 +4,17 @@ var loader = require("./loader")
 
 var app = new express();
 
-app.use(express.static("./page/"));
+const history = require('connect-history-api-fallback');
+//这句代码需要在express.static上面
+app.use(history());
+app.use(express.static('./dist'));
+
+// app.use(express.static("./page/"));
+// app.use((req,res,next) => {
+//     let origin = req.headers.origin;
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     next();
+// })
 
 app.post("/editEveryDay", loader.get("/editEveryDay"));
 app.get("/queryEveryDay", loader.get("/queryEveryDay"));
