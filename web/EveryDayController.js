@@ -1,6 +1,7 @@
 var everyDayDao = require("../dao/EveryDayDao");
 var timeUtil = require("../util/TimeUtil");
 var respUtil = require("../util/RespUtil");
+var log = require("../log");
 
 var path = new Map();
 
@@ -17,6 +18,7 @@ function editEveryDay (request, response) {
 path.set("/editEveryDay", editEveryDay);
 
 function queryEveryDay (request, response) {
+    log(request, "访问IP");
     everyDayDao.queryEveryDay(function(result){
         response.writeHead(200);
         response.write(respUtil.writeResult("success", "添加成功", result));
