@@ -48,12 +48,12 @@ path.set("/queryBlogCount", queryBlogCount);
 function queryBlogByPage(request, response) {
     var params = url.parse(request.url, true).query;
     blogDao.queryBlogByPage(parseInt(params.page), parseInt(params.pageSize), function (result) {
-        for (var i = 0 ; i < result.length ; i ++) {
-            result[i].content = result[i].content.replace(/<img[\w\W]*">/, "");
-            result[i].content = result[i].content.replace(/(<p(([\s\S])*?)>|<\/p>|<code(([\s\S])*?)>|<\/code>|&nbsp;|<a(([\s\S])*?)>|<\/a>)|<div(([\s\S])*?)>|<\/div>|<span(([\s\S])*?)>|<\/span>|<pre(([\s\S])*?)>|<\/pre>|<h3(([\s\S])*?)>|<\/h3>|<br(([\s\S])*?)>|<\/br>|<font(([\s\S])*?)>|<\/font>|<o(([\s\S])*?)>|<\/o:p>|<li(([\s\S])*?)>|<\/li>|<ol(([\s\S])*?)>|<\/ol>|<ul(([\s\S])*?)>|<\/ul>|<table(([\s\S])*?)>|<\/table>|<thead(([\s\S])*?)>|<\/thead>|<tr(([\s\S])*?)>|<\/tr>|<th(([\s\S])*?)>|<\/th>|<tbody(([\s\S])*?)>|<\/tbody>|<td(([\s\S])*?)>|<\/td>/g, "");
-            result[i].content = result[i].content.replace(/&gt;/g, ">").replace(/&lt;/g, "<");
-            result[i].content = result[i].content.substring(0, 350);
-        }
+        // for (var i = 0 ; i < result.length ; i ++) {
+        //     result[i].content = result[i].content.replace(/<img[\w\W]*">/, "");
+        //     result[i].content = result[i].content.replace(/(<p(([\s\S])*?)>|<\/p>|<code(([\s\S])*?)>|<\/code>|&nbsp;|<a(([\s\S])*?)>|<\/a>)|<div(([\s\S])*?)>|<\/div>|<span(([\s\S])*?)>|<\/span>|<pre(([\s\S])*?)>|<\/pre>|<h3(([\s\S])*?)>|<\/h3>|<br(([\s\S])*?)>|<\/br>|<font(([\s\S])*?)>|<\/font>|<o(([\s\S])*?)>|<\/o:p>|<li(([\s\S])*?)>|<\/li>|<ol(([\s\S])*?)>|<\/ol>|<ul(([\s\S])*?)>|<\/ul>|<table(([\s\S])*?)>|<\/table>|<thead(([\s\S])*?)>|<\/thead>|<tr(([\s\S])*?)>|<\/tr>|<th(([\s\S])*?)>|<\/th>|<tbody(([\s\S])*?)>|<\/tbody>|<td(([\s\S])*?)>|<\/td>/g, "");
+        //     result[i].content = result[i].content.replace(/&gt;/g, ">").replace(/&lt;/g, "<");
+        //     result[i].content = result[i].content.substring(0, 350);
+        // }
         response.writeHead(200);
         response.write(respUtil.writeResult("success", "查询成功", result));
         response.end();
