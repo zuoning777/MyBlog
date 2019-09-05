@@ -6,13 +6,13 @@ var timeUtil = require("../util/TimeUtil");
 var respUtil = require("../util/RespUtil");
 var captcha = require("svg-captcha");
 var url = require("url");
-var log = require("../log");
+// var log = require("../log");
 
 var path = new Map();
 
 
 function addComment(request, response) {
-    log(request, "留言IP");
+    // log(request, "留言IP");
     var params = url.parse(request.url, true).query;
 
     commentDao.insertComment(parseInt(params.bid), parseInt(params.parent), params.parentName, params.userName, params.email, params.content, timeUtil.getNow(), timeUtil.getNow(), function (result) {
